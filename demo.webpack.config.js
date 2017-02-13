@@ -2,10 +2,10 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 var config = require('./webpack.config');
 
-config.entry = ['./test/view.scss','./test/test-component.jsx'];
+config.entry = ['./test/view.scss', './test/test-component.jsx'];
 
 config.output = {
-    path:  'dist',
+    path: 'dist',
     publicPath: '/dist/',
     filename: 'dayz-demo.js',
     libraryTarget: 'umd',
