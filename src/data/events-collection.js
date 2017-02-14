@@ -1,25 +1,28 @@
-const Event   = require('./event');
+const Event = require('./event');
 const Emitter = require('tiny-emitter');
-const each    = require('lodash/each');
-const assign  = require('lodash/assign');
-const sortBy  = require('lodash/sortBy');
+const each = require('lodash/each');
+const assign = require('lodash/assign');
+const sortBy = require('lodash/sortBy');
 
-function lengthCompare(event){
+function lengthCompare(event) {
     return event.attributes.range.start.diff(event.attributes.range.end);
 }
 
 class EventsCollection {
     static Event = Event;
 
-    constructor(events = []) {
+    sortBy: () => number = null;
+
+    constructor(events = [], sortByFunction: () => number = null) {
         this.events = [];
-        for (let i = 0, length = events.length; i<length; i++) {
+        this.sortBy = sortByFunction;
+        for (let i = 0, length = events.length; i < length; i++) {
             this.add(events[i]);
         }
     }
 
     add(event) {
-        if (!event.isEvent){
+        if (!event.isEvent) {
             event = new Event(event);
         }
         event.collection = this;
@@ -29,7 +32,7 @@ class EventsCollection {
     }
 
     each(fn, scope) {
-        var sorted = sortBy(this.events, lengthCompare);
+        var sorted = sortBy(this.events, (this.sortBy == null) ? lengthCompare : this.sortBy);
         each(sorted, fn, scope);
     }
 
@@ -37,15 +40,15 @@ class EventsCollection {
         return this.events.length;
     }
 
-    remove(event){
+    remove(event) {
         const index = this.events.indexOf(event);
-        if (-1 !== index){
+        if (-1 !== index) {
             this.events.splice(index, 1);
             this.emit('change');
         }
     }
 }
 
-assign( EventsCollection.prototype, Emitter.prototype );
+assign(EventsCollection.prototype, Emitter.prototype);
 
 module.exports = EventsCollection;

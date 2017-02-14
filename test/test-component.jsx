@@ -1,5 +1,6 @@
-const Dayz   = require('../src/dayz');
-const React  = require('react');
+const Dayz = require('../src/dayz');
+const Event = require('../src/data/event');
+const React = require('react');
 const moment = require('moment');
 require('moment-range');
 
@@ -17,32 +18,59 @@ class DayzTestComponent extends React.Component {
         const date = moment("2015-09-11");
         this.state = {
             date,
-            display: 'week',
+            display: 'month',
             events: new Dayz.EventsCollection([
-                { content: 'Continuing event Past',
-                  range: moment.range( moment('2015-09-08'), moment('2015-09-14') ) },
+                {
+                    content: 'Continuing event Past',
+                    range: moment.range(moment('2015-09-08'), moment('2015-09-14'))
+                },
 
-                { content: 'Continuing event Before',
-                  range: moment.range( '2015-09-04','2015-09-09') },
+                {
+                    content: 'Continuing event Past ***',
+                    range: moment.range(moment('2015-09-08'), moment('2015-09-14'))
+                },
 
-                { content: "Weeklong",
-                  range: moment.range('2015-09-06',moment('2015-09-12').endOf('day') ) },
+                {
+                    content: 'Continuing event Before',
+                    range: moment.range('2015-09-04', '2015-09-09')
+                },
 
-                { content: "A Longer Event",
-                  range: moment.range( moment('2015-09-04'), moment('2015-09-14') )},
+                {
+                    content: "Weeklong",
+                    range: moment.range('2015-09-06', moment('2015-09-12').endOf('day'))
+                },
 
-                { content: "Inclusive",
-                  range: moment.range( moment('2015-09-07'), moment('2015-09-12') )},
+                {
+                    content: "A Longer Event",
+                    range: moment.range(moment('2015-09-04'), moment('2015-09-14'))
+                },
 
-                { content: '9am - 2pm (resizable)',
-                  resizable: {step: 15},
-                  range: moment.range( moment('2015-09-11').hour(9),
-                                       moment('2015-09-11').hour(14))},
+                {
+                    content: "Inclusive",
+                    range: moment.range(moment('2015-09-07'), moment('2015-09-12'))
+                },
 
-                { content: '8am - 8pm (non-resizable)',
-                  range: moment.range( moment('2015-09-07').hour(8),
-                                       moment('2015-09-07').hour(20) ) }
-            ])
+                {
+                    content: '9am - 2pm (resizable)',
+                    resizable: { step: 15 },
+                    range: moment.range(moment('2015-09-11').hour(9),
+                        moment('2015-09-11').hour(14))
+                },
+                {
+                    content: '8am - 2pm (resizable) ****',
+                    resizable: { step: 15 },
+                    range: moment.range(moment('2015-09-11').hour(8),
+                        moment('2015-09-11').hour(14))
+                },
+
+                {
+                    content: '8am - 8pm (non-resizable)',
+                    range: moment.range(moment('2015-09-07').hour(8),
+                        moment('2015-09-07').hour(20))
+                }
+            ], (event: Event) => {
+                return event.range().start.valueOf();
+            })
         };
     }
 
@@ -51,32 +79,34 @@ class DayzTestComponent extends React.Component {
     }
 
     onEventClick(ev, event) {
-        event.set({editing: !event.isEditing()});
+        event.set({ editing: !event.isEditing() });
     }
     onEventResize(ev, event) {
         const start = event.start().format('hh:mma');
-        const end   = event.end().format('hh:mma');
-        event.set({content: `${start} - ${end} (resizable)`});
+        const end = event.end().format('hh:mma');
+        event.set({ content: `${start} - ${end} (resizable)` });
     }
     addEvent(ev, date) {
         this.state.events.add(
-            { content: `Event ${COUNT++}`,
-              resizable: true,
-              range: moment.range( date.clone(),
-                                   date.clone().add(1, 'hour').add(45, 'minutes'))}
+            {
+                content: `Event ${COUNT++}`,
+                resizable: true,
+                range: moment.range(date.clone(),
+                    date.clone().add(1, 'hour').add(45, 'minutes'))
+            }
         );
     }
 
     editComponent(props) {
-        const onBlur   = function() { props.event.set({editing: false}); };
-        const onChange = function(ev){ props.event.set({content: ev.target.value}); };
-        const onDelete = function() { props.event.remove(); };
+        const onBlur = function () { props.event.set({ editing: false }); };
+        const onChange = function (ev) { props.event.set({ content: ev.target.value }); };
+        const onDelete = function () { props.event.remove(); };
         return (
             <div className="edit">
                 <input type="text" autoFocus
-                       value={props.event.content()}
-                       onChange={onChange}
-                       onBlur={onBlur}
+                    value={props.event.content()}
+                    onChange={onChange}
+                    onBlur={onBlur}
                 />
                 <button onClick={onDelete}>X</button>
             </div>
@@ -91,25 +121,25 @@ class DayzTestComponent extends React.Component {
                 <div className="tools">
                     <label>
                         Month: <input type="radio"
-                                      name="style" value="month" onChange={this.changeDisplay}
-                                      checked={this.state.display === 'month'} />
+                            name="style" value="month" onChange={this.changeDisplay}
+                            checked={this.state.display === 'month'} />
                     </label><label>
                         Week: <input type="radio"
-                                     name="style" value="week" onChange={this.changeDisplay}
-                                     checked={this.state.display === 'week'} />
+                            name="style" value="week" onChange={this.changeDisplay}
+                            checked={this.state.display === 'week'} />
                     </label><label>
                         Day: <input type="radio"
-                                    name="style" value="day" onChange={this.changeDisplay}
-                                    checked={this.state.display === 'day'} />
+                            name="style" value="day" onChange={this.changeDisplay}
+                            checked={this.state.display === 'day'} />
                     </label>
                 </div>
 
                 <Dayz {...this.state}
-                      displayHours={[6, 22]}
-                      onEventResize={this.onEventResize}
-                      editComponent={this.editComponent}
-                      onDayDoubleClick={this.addEvent}
-                      onEventClick={this.onEventClick}
+                    displayHours={[6, 22]}
+                    onEventResize={this.onEventResize}
+                    editComponent={this.editComponent}
+                    onDayDoubleClick={this.addEvent}
+                    onEventClick={this.onEventClick}
                 >
                 </Dayz>
             </div>
