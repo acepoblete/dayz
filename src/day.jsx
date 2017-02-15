@@ -12,7 +12,6 @@ const Day = React.createClass({
 
     propTypes: {
         day: React.PropTypes.object.isRequired,
-        isCurrent: React.PropTypes.bool,
         layout: React.PropTypes.instanceOf(Layout).isRequired,
         position: React.PropTypes.number.isRequired,
         onClick: React.PropTypes.func,
@@ -20,7 +19,8 @@ const Day = React.createClass({
         onEventClick: React.PropTypes.func,
         onEventResize: React.PropTypes.func,
         editComponent: React.PropTypes.func,
-        onEventDoubleClick: React.PropTypes.func
+        onEventDoubleClick: React.PropTypes.func,
+        onRendered: React.PropTypes.func
     },
 
     getInitialState() {
@@ -115,6 +115,32 @@ const Day = React.createClass({
         return events;
     },
 
+    onRendered() {
+        if (this.props.onRendered) {
+            this.props.onRendered(this.props.layout.display, this.refs);
+        }
+    },
+
+    componentDidUpdate() {
+        this.onRendered();
+        if (this.props.layout.isDisplayingAsMonth()) {
+            window.addEventListener("resize", this.onRendered);
+        } else {
+            window.removeEventListener("resize", this.onRendered);
+        }
+
+    },
+
+    componentDidMount() {
+        this.onRendered();
+        window.addEventListener("resize", this.onRendered);
+    },
+
+    componentWillUnmount: function () {
+        this.onRendered();
+        window.removeEventListener("resize", this.onRendered);
+    },
+
     render() {
         const props = this.props.layout.propsForDayContainer(this.props);
 
@@ -124,7 +150,7 @@ const Day = React.createClass({
                 onClick={this.onClick}
                 onDoubleClick={this.onDoubleClick}
             >
-                <Label day={this.props.day} isCurrent={this.props.isCurrent} className="label">
+                <Label day={this.props.day} className="label">
                     {this.props.day.format('D')}
                 </Label>
                 {this.renderEvents()}

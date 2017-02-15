@@ -15,15 +15,16 @@ class DayzTestComponent extends React.Component {
         this.editComponent = this.editComponent.bind(this);
         this.changeDisplay = this.changeDisplay.bind(this);
         this.onEventResize = this.onEventResize.bind(this);
-        const date = moment("2015-09-11");
+        const date = moment("2015-09-18");
         this.state = {
             date,
-            display: 'month',
+            display: 'week',
             events: new Dayz.EventsCollection([
                 {
                     content: 'Continuing event Past',
                     range: moment.range(moment('2015-09-08'), moment('2015-09-14'))
                 },
+
 
                 {
                     content: 'Continuing event Past ***',
@@ -53,14 +54,272 @@ class DayzTestComponent extends React.Component {
                 {
                     content: '9am - 2pm (resizable)',
                     resizable: { step: 15 },
-                    range: moment.range(moment('2015-09-11').hour(9),
-                        moment('2015-09-11').hour(14))
+                    range: moment.range(moment('2015-09-18').hour(9),
+                        moment('2015-09-18').hour(14))
                 },
                 {
-                    content: '8am - 2pm (resizable) ****',
+                    content: '9am - 2pm (resizable)',
                     resizable: { step: 15 },
-                    range: moment.range(moment('2015-09-11').hour(8),
-                        moment('2015-09-11').hour(14))
+                    range: moment.range(moment('2015-09-18').hour(9),
+                        moment('2015-09-18').hour(14))
+                },
+                {
+                    content: '9am - 2pm (resizable)',
+                    resizable: { step: 15 },
+                    range: moment.range(moment('2015-09-18').hour(9),
+                        moment('2015-09-18').hour(14))
+                },
+                {
+                    content: '9am - 2pm (resizable)',
+                    resizable: { step: 15 },
+                    range: moment.range(moment('2015-09-18').hour(9),
+                        moment('2015-09-18').hour(14))
+                },
+                {
+                    content: '9am - 2pm (resizable)',
+                    resizable: { step: 15 },
+                    range: moment.range(moment('2015-09-18').hour(9),
+                        moment('2015-09-18').hour(14))
+                },
+                {
+                    content: '9am - 2pm (resizable)',
+                    resizable: { step: 15 },
+                    range: moment.range(moment('2015-09-18').hour(9),
+                        moment('2015-09-18').hour(14))
+                },
+                {
+                    content: '9am - 2pm (resizable)',
+                    resizable: { step: 15 },
+                    range: moment.range(moment('2015-09-18').hour(9),
+                        moment('2015-09-18').hour(14))
+                },
+                {
+                    content: '9am - 2pm (resizable)',
+                    resizable: { step: 15 },
+                    range: moment.range(moment('2015-09-18').hour(9),
+                        moment('2015-09-18').hour(14))
+                },
+                {
+                    content: '9am - 2pm (resizable)',
+                    resizable: { step: 15 },
+                    range: moment.range(moment('2015-09-18').hour(9),
+                        moment('2015-09-18').hour(14))
+                },
+                {
+                    content: '9am - 2pm (resizable)',
+                    resizable: { step: 15 },
+                    range: moment.range(moment('2015-09-18').hour(9),
+                        moment('2015-09-18').hour(14))
+                },
+                {
+                    content: '9am - 2pm (resizable)',
+                    resizable: { step: 15 },
+                    range: moment.range(moment('2015-09-18').hour(9),
+                        moment('2015-09-18').hour(14))
+                },
+                {
+                    content: '9am - 2pm (resizable)',
+                    resizable: { step: 15 },
+                    range: moment.range(moment('2015-09-18').hour(9),
+                        moment('2015-09-18').hour(14))
+                },
+                {
+                    content: '9am - 2pm (resizable)',
+                    resizable: { step: 15 },
+                    range: moment.range(moment('2015-09-18').hour(9),
+                        moment('2015-09-18').hour(14))
+                },
+                {
+                    content: '9am - 2pm (resizable)',
+                    resizable: { step: 15 },
+                    range: moment.range(moment('2015-09-18').hour(9),
+                        moment('2015-09-18').hour(14))
+                },
+                {
+                    content: '9am - 2pm (resizable)',
+                    resizable: { step: 15 },
+                    range: moment.range(moment('2015-09-18').hour(9),
+                        moment('2015-09-18').hour(14))
+                },
+                {
+                    content: '9am - 2pm (resizable)',
+                    resizable: { step: 15 },
+                    range: moment.range(moment('2015-09-18').hour(9),
+                        moment('2015-09-18').hour(14))
+                },
+                {
+                    content: '9am - 2pm (resizable)',
+                    resizable: { step: 15 },
+                    range: moment.range(moment('2015-09-18').hour(9),
+                        moment('2015-09-18').hour(14))
+                },
+                {
+                    content: '9am - 2pm (resizable)',
+                    resizable: { step: 15 },
+                    range: moment.range(moment('2015-09-18').hour(9),
+                        moment('2015-09-18').hour(14))
+                },
+                {
+                    content: '9am - 2pm (resizable)',
+                    resizable: { step: 15 },
+                    range: moment.range(moment('2015-09-18').hour(9),
+                        moment('2015-09-18').hour(14))
+                },
+                {
+                    content: '9am - 2pm (resizable)',
+                    resizable: { step: 15 },
+                    range: moment.range(moment('2015-09-18').hour(9),
+                        moment('2015-09-18').hour(14))
+                },
+                {
+                    content: '9am - 2pm (resizable)',
+                    resizable: { step: 15 },
+                    range: moment.range(moment('2015-09-18').hour(9),
+                        moment('2015-09-18').hour(14))
+                },
+                {
+                    content: '9am - 2pm (resizable)',
+                    resizable: { step: 15 },
+                    range: moment.range(moment('2015-09-18').hour(9),
+                        moment('2015-09-18').hour(14))
+                },
+                {
+                    content: '9am - 2pm (resizable)',
+                    resizable: { step: 15 },
+                    range: moment.range(moment('2015-09-18').hour(9),
+                        moment('2015-09-18').hour(14))
+                },
+                {
+                    content: '9am - 2pm (resizable)',
+                    resizable: { step: 15 },
+                    range: moment.range(moment('2015-09-18').hour(9),
+                        moment('2015-09-18').hour(14))
+                },
+                {
+                    content: '9am - 2pm (resizable)',
+                    resizable: { step: 15 },
+                    range: moment.range(moment('2015-09-18').hour(9),
+                        moment('2015-09-18').hour(14))
+                },
+                {
+                    content: '9am - 2pm (resizable)',
+                    resizable: { step: 15 },
+                    range: moment.range(moment('2015-09-18').hour(9),
+                        moment('2015-09-18').hour(14))
+                },
+                {
+                    content: '9am - 2pm (resizable)',
+                    resizable: { step: 15 },
+                    range: moment.range(moment('2015-09-18').hour(9),
+                        moment('2015-09-18').hour(14))
+                },
+                {
+                    content: '9am - 2pm (resizable)',
+                    resizable: { step: 15 },
+                    range: moment.range(moment('2015-09-18').hour(9),
+                        moment('2015-09-18').hour(14))
+                },
+                {
+                    content: '9am - 2pm (resizable)',
+                    resizable: { step: 15 },
+                    range: moment.range(moment('2015-09-18').hour(9),
+                        moment('2015-09-18').hour(14))
+                },
+                {
+                    content: '9am - 2pm (resizable)',
+                    resizable: { step: 15 },
+                    range: moment.range(moment('2015-09-18').hour(9),
+                        moment('2015-09-18').hour(14))
+                },
+                {
+                    content: '9am - 2pm (resizable)',
+                    resizable: { step: 15 },
+                    range: moment.range(moment('2015-09-18').hour(9),
+                        moment('2015-09-18').hour(14))
+                },
+                {
+                    content: '9am - 2pm (resizable)',
+                    resizable: { step: 15 },
+                    range: moment.range(moment('2015-09-18').hour(9),
+                        moment('2015-09-18').hour(14))
+                },
+                {
+                    content: '9am - 2pm (resizable)',
+                    resizable: { step: 15 },
+                    range: moment.range(moment('2015-09-18').hour(9),
+                        moment('2015-09-18').hour(14))
+                },
+                {
+                    content: '9am - 2pm (resizable)',
+                    resizable: { step: 15 },
+                    range: moment.range(moment('2015-09-18').hour(9),
+                        moment('2015-09-18').hour(14))
+                },
+                {
+                    content: '9am - 2pm (resizable)',
+                    resizable: { step: 15 },
+                    range: moment.range(moment('2015-09-18').hour(9),
+                        moment('2015-09-18').hour(14))
+                },
+                {
+                    content: '9am - 2pm (resizable)',
+                    resizable: { step: 15 },
+                    range: moment.range(moment('2015-09-18').hour(9),
+                        moment('2015-09-18').hour(14))
+                },
+                {
+                    content: '9am - 2pm (resizable)',
+                    resizable: { step: 15 },
+                    range: moment.range(moment('2015-09-18').hour(9),
+                        moment('2015-09-18').hour(14))
+                },
+                {
+                    content: '9am - 2pm (resizable)',
+                    resizable: { step: 15 },
+                    range: moment.range(moment('2015-09-18').hour(9),
+                        moment('2015-09-18').hour(14))
+                },
+                {
+                    content: '9am - 2pm (resizable)',
+                    resizable: { step: 15 },
+                    range: moment.range(moment('2015-09-18').hour(9),
+                        moment('2015-09-18').hour(14))
+                },
+                {
+                    content: '9am - 2pm (resizable)',
+                    resizable: { step: 15 },
+                    range: moment.range(moment('2015-09-18').hour(9),
+                        moment('2015-09-18').hour(14))
+                },
+                {
+                    content: '9am - 2pm (resizable)',
+                    resizable: { step: 15 },
+                    range: moment.range(moment('2015-09-18').hour(9),
+                        moment('2015-09-18').hour(14))
+                },
+                {
+                    content: '9am - 2pm (resizable)',
+                    resizable: { step: 15 },
+                    range: moment.range(moment('2015-09-18').hour(9),
+                        moment('2015-09-18').hour(14))
+                },
+                {
+                    content: '9am - 2pm (resizable)',
+                    resizable: { step: 15 },
+                    range: moment.range(moment('2015-09-18').hour(9),
+                        moment('2015-09-18').hour(14))
+                },
+                {
+                    content: '9am - 2pm (resizable)',
+                    resizable: { step: 15 },
+                    range: moment.range(moment('2015-09-18').hour(9),
+                        moment('2015-09-18').hour(14))
+                },
+                {
+                    content: '9am - 2pm (resizable)',
+                    resizable: { step: 15 },
+                    range: moment.range(moment('2015-09-18').hour(9),
+                        moment('2015-09-18').hour(14))
                 },
 
                 {
@@ -113,6 +372,34 @@ class DayzTestComponent extends React.Component {
         );
     }
 
+    onRendered(display, refs) {
+        const dayElm = refs.root;
+        if (display === 'month') {
+            // we need to check to see if we have events larger then our day box
+            const dayz = document.getElementsByClassName('dayz').item(0);
+            const dayzHeight = dayz.clientHeight;
+            const dayHeight = Math.floor((dayzHeight / 5));
+            const label = dayElm.getElementsByClassName('label').item(0);
+            const eventHeight = Math.floor(dayHeight - (label.clientHeight + 7));
+            dayElm.style.setProperty('height', `${dayHeight}px`);
+
+            const events = dayElm.getElementsByClassName('events');
+            if (events.length > 0) {
+                events.item(0).style.setProperty('height', `${eventHeight}px`);
+                events.item(0).style.setProperty('overflow-y', 'hidden');
+            }
+
+        } else {
+            // since we aren't in month view we need to undo our heights.
+            dayElm.style.removeProperty('height');
+            const events = dayElm.getElementsByClassName('events');
+            if (events.length > 0) {
+                events.item(0).style.removeProperty('height');
+                events.item(0).style.removeProperty('overflow-y');
+            }
+        }
+    }
+
     render() {
 
         return (
@@ -140,6 +427,7 @@ class DayzTestComponent extends React.Component {
                     editComponent={this.editComponent}
                     onDayDoubleClick={this.addEvent}
                     onEventClick={this.onEventClick}
+                    onRendered={this.onRendered}
                 >
                 </Dayz>
             </div>

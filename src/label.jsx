@@ -1,16 +1,16 @@
 const React = require('react');
+const moment = require('moment');
 
 const Label = React.createClass({
 
     propTypes: {
-        day: React.PropTypes.object.isRequired,
-        isCurrent: React.PropTypes.bool
+        day: React.PropTypes.object.isRequired
     },
 
     render() {
 
         let className = 'label';
-        if (this.props.isCurrent) {
+        if (this.props.day.format('YYYYMMDD') === moment().format('YYYYMMDD')) {
             className = 'label current';
         }
 
