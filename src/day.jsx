@@ -20,7 +20,8 @@ const Day = React.createClass({
         onEventResize: React.PropTypes.func,
         editComponent: React.PropTypes.func,
         onEventDoubleClick: React.PropTypes.func,
-        onRendered: React.PropTypes.func
+        onRendered: React.PropTypes.func,
+        dayMonthActions: React.PropTypes.node
     },
 
     getInitialState() {
@@ -47,7 +48,9 @@ const Day = React.createClass({
             ((this.props.layout.minutesInDay() * perc) / 60);
         handler.call(this, ev, this.props.day.clone().startOf('day').add(hours, 'hour'));
     },
+
     onClick(ev) { this._onClickHandler(ev, this.props.onClick); },
+
     onDoubleClick(ev) { this._onClickHandler(ev, this.props.onDoubleClick); },
 
     onDragStart(resize, eventLayout) {
@@ -128,7 +131,6 @@ const Day = React.createClass({
         } else {
             window.removeEventListener("resize", this.onRendered);
         }
-
     },
 
     componentDidMount() {
@@ -139,6 +141,16 @@ const Day = React.createClass({
     componentWillUnmount: function () {
         this.onRendered();
         window.removeEventListener("resize", this.onRendered);
+    },
+
+    dayMonthActions() {
+        if (!this.props.dayMonthActions || !this.props.layout.isDisplayingAsMonth()) {
+            return null;
+        }
+
+        return (
+            <span className="actions">{this.props.dayMonthActions}</span>
+        );
     },
 
     render() {
@@ -153,6 +165,7 @@ const Day = React.createClass({
                 <Label day={this.props.day} className="label">
                     {this.props.day.format('D')}
                 </Label>
+                {this.dayMonthActions()}
                 {this.renderEvents()}
             </div>
         );

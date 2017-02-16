@@ -21,7 +21,9 @@ const Dayz = React.createClass({
         onDayDoubleClick: React.PropTypes.func,
         onEventClick: React.PropTypes.func,
         onEventResize: React.PropTypes.func,
-        onRendered: React.PropTypes.func
+        onRendered: React.PropTypes.func,
+        monthDayActions: React.PropTypes.node,
+        onDayMonthActionsDisplay: React.PropTypes.func
     },
 
     getDefaultProps() {
@@ -81,6 +83,8 @@ const Dayz = React.createClass({
                 onEventClick={this.props.onEventClick}
                 onEventResize={this.props.onEventResize}
                 onRendered={this.props.onRendered}
+                dayMonthActions={this.props.monthDayActions}
+                onDayMonthActionsDisplay={this.props.onDayMonthActionsDisplay}
             />)
         );
         return (

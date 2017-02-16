@@ -91,7 +91,6 @@ black // (tan)
         border-right: 1px solid $dayz-border-color;
         border-bottom: 1px solid $dayz-border-color;
         box-sizing: border-box;
-
         .events {
             overflow-y: hidden;
         }
@@ -102,6 +101,12 @@ black // (tan)
             &.current {
                 color: darkred;
             }
+        }
+        .actions {
+            width: 80%;
+            float: right;
+            text-align: right;
+            margin: 3px 3px 0 0;
         }
     }
     &.month,

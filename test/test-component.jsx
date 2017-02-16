@@ -3,6 +3,7 @@ const Event = require('../src/data/event');
 const React = require('react');
 const moment = require('moment');
 require('moment-range');
+const ReactDOM = require('react-dom');
 
 let COUNT = 1;
 
@@ -385,10 +386,16 @@ class DayzTestComponent extends React.Component {
 
             const events = dayElm.getElementsByClassName('events');
             if (events.length > 0) {
+                const event = dayElm.getElementsByClassName('event');
+                const overflowHeight = event.length * event.item(0).clientHeight;
+                if (overflowHeight > eventHeight) {
+                    dayElm.classList.add('overflow');
+
+                }
+
                 events.item(0).style.setProperty('height', `${eventHeight}px`);
                 events.item(0).style.setProperty('overflow-y', 'scroll');
             }
-
         } else {
             // since we aren't in month view we need to undo our heights.
             dayElm.style.removeProperty('height');
@@ -428,6 +435,7 @@ class DayzTestComponent extends React.Component {
                     onDayDoubleClick={this.addEvent}
                     onEventClick={this.onEventClick}
                     onRendered={this.onRendered}
+                    monthDayActions={<button>X</button>}
                 >
                 </Dayz>
             </div>
