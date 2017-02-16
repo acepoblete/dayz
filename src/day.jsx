@@ -147,7 +147,6 @@ const Day = React.createClass({
         if (!this.props.dayMonthActions || !this.props.layout.isDisplayingAsMonth()) {
             return null;
         }
-        debugger;
         return (
             <span className="actions">{this.props.dayMonthActions(this.props.day)}</span>
         );

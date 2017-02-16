@@ -436,7 +436,6 @@ class DayzTestComponent extends React.Component {
                     onEventClick={this.onEventClick}
                     onRendered={this.onRendered}
                     monthDayActions={(day) => {
-                        debugger;
                         return (<button>{day.format('DD')}</button>);
                     }}
                 >
