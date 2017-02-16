@@ -435,7 +435,10 @@ class DayzTestComponent extends React.Component {
                     onDayDoubleClick={this.addEvent}
                     onEventClick={this.onEventClick}
                     onRendered={this.onRendered}
-                    monthDayActions={<button>X</button>}
+                    monthDayActions={(day) => {
+                        debugger;
+                        return (<button>{day.format('DD')}</button>);
+                    }}
                 >
                 </Dayz>
             </div>

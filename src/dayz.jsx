@@ -22,7 +22,7 @@ const Dayz = React.createClass({
         onEventClick: React.PropTypes.func,
         onEventResize: React.PropTypes.func,
         onRendered: React.PropTypes.func,
-        monthDayActions: React.PropTypes.node,
+        monthDayActions: React.PropTypes.func,
         onDayMonthActionsDisplay: React.PropTypes.func
     },
 

@@ -21,7 +21,7 @@ const Day = React.createClass({
         editComponent: React.PropTypes.func,
         onEventDoubleClick: React.PropTypes.func,
         onRendered: React.PropTypes.func,
-        dayMonthActions: React.PropTypes.node
+        dayMonthActions: React.PropTypes.func
     },
 
     getInitialState() {
@@ -147,9 +147,9 @@ const Day = React.createClass({
         if (!this.props.dayMonthActions || !this.props.layout.isDisplayingAsMonth()) {
             return null;
         }
-
+        debugger;
         return (
-            <span className="actions">{this.props.dayMonthActions}</span>
+            <span className="actions">{this.props.dayMonthActions(this.props.day)}</span>
         );
     },
 
