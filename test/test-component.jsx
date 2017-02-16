@@ -386,7 +386,7 @@ class DayzTestComponent extends React.Component {
             const events = dayElm.getElementsByClassName('events');
             if (events.length > 0) {
                 events.item(0).style.setProperty('height', `${eventHeight}px`);
-                events.item(0).style.setProperty('overflow-y', 'hidden');
+                events.item(0).style.setProperty('overflow-y', 'scroll');
             }
 
         } else {
